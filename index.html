@@ -445,6 +445,70 @@
 
   /* ── SVG ICONS (inline) ─────────────────── */
   .icon { display: inline-block; width: 1em; height: 1em; vertical-align: middle; }
+
+  /* ── BEFORE & AFTER ────────────────────── */
+  #before-after { background: var(--bg2); }
+
+  .ba-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 28px;
+  }
+
+  .ba-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: border-color .2s, transform .2s;
+  }
+  .ba-card:hover { border-color: rgba(201,168,76,0.35); transform: translateY(-3px); }
+
+  .ba-label-row {
+    padding: 16px 20px 14px;
+    border-bottom: 1px solid var(--border);
+  }
+  .ba-project-label {
+    font-size: 15px; font-weight: 700; color: var(--text);
+  }
+  .ba-project-type {
+    font-size: 12px; color: var(--gold); font-weight: 600;
+    letter-spacing: 1px; text-transform: uppercase;
+    margin-top: 3px;
+  }
+
+  .ba-panels {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .ba-panel {
+    position: relative;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    background: #0a0a14;
+  }
+  .ba-panel + .ba-panel {
+    border-left: 1px solid var(--border);
+  }
+
+  .ba-panel img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .ba-panel-badge {
+    position: absolute; bottom: 10px; left: 50%;
+    transform: translateX(-50%);
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    padding: 4px 12px; border-radius: 20px;
+    white-space: nowrap;
+    pointer-events: none;
+  }
+  .ba-panel-badge.before { background: rgba(0,0,0,0.65); color: #d0ccc8; }
+  .ba-panel-badge.after  { background: rgba(196,160,48,0.9); color: #1a1400; }
 </style>
 </head>
 <body>
@@ -576,6 +640,87 @@
       </div>
 
     </div>
+  </div>
+</section>
+
+<!-- BEFORE & AFTER -->
+<!-- ============================================================
+     HOW TO ADD YOUR PHOTOS:
+     For each .ba-panel, replace the src="" with your image path.
+     Examples:
+       src="images/kitchen-before.jpg"   (local file)
+       src="https://example.com/photo.jpg" (URL)
+     To add more projects, copy a full <!-- PROJECT --> block and paste it.
+     ============================================================ -->
+<section id="before-after">
+  <div class="section-inner">
+    <p class="section-label">Our Work</p>
+    <h2 class="section-title">Before &amp; After</h2>
+    <p class="section-sub">See the difference quality craftsmanship makes.</p>
+
+    <div class="ba-grid">
+
+      <!-- PROJECT 1 -->
+      <div class="ba-card">
+        <div class="ba-label-row">
+          <div class="ba-project-label">Kitchen Remodel</div>
+          <div class="ba-project-type">Full Renovation</div>
+        </div>
+        <div class="ba-panels">
+          <div class="ba-panel">
+            <!-- BEFORE image: replace src="" with your image path -->
+            <img src="download.jfif" alt="Before" onerror="this.parentElement.style.background='#12121f'">
+            <span class="ba-panel-badge before">Before</span>
+          </div>
+          <div class="ba-panel">
+            <!-- AFTER image: replace src="" with your image path -->
+            <img src="download.jfif" alt="After" onerror="this.parentElement.style.background='#12121f'">
+            <span class="ba-panel-badge after">After</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROJECT 2 -->
+      <div class="ba-card">
+        <div class="ba-label-row">
+          <div class="ba-project-label">Bathroom Renovation</div>
+          <div class="ba-project-type">Full Renovation</div>
+        </div>
+        <div class="ba-panels">
+          <div class="ba-panel">
+            <!-- BEFORE image: replace src="" with your image path -->
+            <img src="" alt="Before" onerror="this.parentElement.style.background='#12121f'">
+            <span class="ba-panel-badge before">Before</span>
+          </div>
+          <div class="ba-panel">
+            <!-- AFTER image: replace src="" with your image path -->
+            <img src="" alt="After" onerror="this.parentElement.style.background='#12121f'">
+            <span class="ba-panel-badge after">After</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROJECT 3 -->
+      <div class="ba-card">
+        <div class="ba-label-row">
+          <div class="ba-project-label">Basement Finishing</div>
+          <div class="ba-project-type">Full Renovation</div>
+        </div>
+        <div class="ba-panels">
+          <div class="ba-panel">
+            <!-- BEFORE image: replace src="" with your image path -->
+            <img src="" alt="Before" onerror="this.parentElement.style.background='#12121f'">
+            <span class="ba-panel-badge before">Before</span>
+          </div>
+          <div class="ba-panel">
+            <!-- AFTER image: replace src="" with your image path -->
+            <img src="" alt="After" onerror="this.parentElement.style.background='#12121f'">
+            <span class="ba-panel-badge after">After</span>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /.ba-grid -->
   </div>
 </section>
 
