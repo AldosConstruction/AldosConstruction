@@ -72,6 +72,66 @@
   }
   .nav-links a:hover { color: var(--gold); }
 
+  /* Hamburger button — hidden on desktop */
+  .nav-hamburger {
+    display: none;
+    flex-direction: column; justify-content: center; gap: 5px;
+    width: 40px; height: 40px;
+    background: none; border: none; cursor: pointer;
+    padding: 6px; border-radius: 8px;
+    transition: background .2s;
+    flex-shrink: 0;
+  }
+  .nav-hamburger:hover { background: rgba(255,255,255,0.06); }
+  .nav-hamburger span {
+    display: block; height: 2px; border-radius: 2px;
+    background: var(--text);
+    transition: transform .3s, opacity .3s, width .3s;
+    transform-origin: center;
+  }
+  .nav-hamburger span:nth-child(1) { width: 22px; }
+  .nav-hamburger span:nth-child(2) { width: 16px; }
+  .nav-hamburger span:nth-child(3) { width: 22px; }
+
+  /* Open state — draws an X */
+  .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); width: 22px; }
+  .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+  .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); width: 22px; }
+
+  /* Mobile drawer */
+  @media(max-width: 768px) {
+    nav { padding: 0 20px; }
+
+    .nav-hamburger { display: flex; }
+
+    .nav-links {
+      display: none;
+      position: fixed;
+      top: 64px; left: 0; right: 0;
+      flex-direction: column;
+      gap: 0;
+      background: rgba(10,10,20,0.97);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      padding: 12px 0 20px;
+      animation: slideDown .25s ease;
+    }
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-8px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .nav-links.open { display: flex; }
+
+    .nav-links li { width: 100%; }
+    .nav-links a {
+      display: block;
+      padding: 14px 28px;
+      font-size: 15px;
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-links li:last-child a { border-bottom: none; }
+  }
+
   .btn-primary {
     background: var(--gold-btn);
     color: #1a1400;
