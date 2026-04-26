@@ -47,6 +47,7 @@
   .nav-logo {
     display: flex; align-items: center; gap: 10px;
     text-decoration: none; color: var(--text);
+    flex-shrink: 0;
   }
   .nav-logo-icon {
     width: 36px; height: 36px;
@@ -72,7 +73,7 @@
   }
   .nav-links a:hover { color: var(--gold); }
 
-  /* Hamburger button — hidden on desktop */
+  /* ── Hamburger — hidden on desktop ── */
   .nav-hamburger {
     display: none;
     flex-direction: column; justify-content: center; gap: 5px;
@@ -93,12 +94,12 @@
   .nav-hamburger span:nth-child(2) { width: 16px; }
   .nav-hamburger span:nth-child(3) { width: 22px; }
 
-  /* Open state — draws an X */
+  /* X when open */
   .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); width: 22px; }
   .nav-hamburger.open span:nth-child(2) { opacity: 0; }
   .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); width: 22px; }
 
-  /* Mobile drawer */
+  /* ── Mobile drawer ── */
   @media(max-width: 768px) {
     nav { padding: 0 20px; }
 
@@ -114,11 +115,6 @@
       backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border);
       padding: 12px 0 20px;
-      animation: slideDown .25s ease;
-    }
-    @keyframes slideDown {
-      from { opacity: 0; transform: translateY(-8px); }
-      to   { opacity: 1; transform: translateY(0); }
     }
     .nav-links.open { display: flex; }
 
@@ -131,20 +127,6 @@
     }
     .nav-links li:last-child a { border-bottom: none; }
   }
-
-  .btn-primary {
-    background: var(--gold-btn);
-    color: #1a1400;
-    border: none; cursor: pointer;
-    font-family: 'DM Sans', sans-serif;
-    font-weight: 600; font-size: 14px;
-    padding: 10px 22px;
-    border-radius: 8px;
-    transition: background .2s, transform .15s;
-    text-decoration: none;
-    display: inline-flex; align-items: center; gap: 8px;
-  }
-  .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
 
   .btn-outline {
     background: transparent;
@@ -172,8 +154,6 @@
     background: var(--bg);
     overflow: hidden;
   }
-
-  /* dot-grid background */
   #hero::before {
     content: '';
     position: absolute; inset: 0;
@@ -181,7 +161,6 @@
     background-size: 38px 38px;
     pointer-events: none;
   }
-  /* bottom fade */
   #hero::after {
     content: '';
     position: absolute; bottom: 0; left: 0; right: 0;
@@ -199,47 +178,22 @@
     margin-bottom: 28px;
     background: rgba(201,168,76,0.06);
   }
-
   .hero-title {
     font-family: 'Playfair Display', serif;
     font-size: clamp(42px, 6vw, 72px);
-    font-weight: 800;
-    line-height: 1.1;
-    max-width: 700px;
-    margin-bottom: 24px;
+    font-weight: 800; line-height: 1.1;
+    max-width: 700px; margin-bottom: 24px;
   }
-
   .hero-sub {
-    color: var(--muted);
-    font-size: 17px;
-    max-width: 520px;
-    margin-bottom: 40px;
-    line-height: 1.7;
+    color: var(--muted); font-size: 17px;
+    max-width: 520px; margin-bottom: 40px; line-height: 1.7;
   }
-
   .hero-ctas {
     display: flex; gap: 16px; flex-wrap: wrap;
-    justify-content: center;
-    margin-bottom: 52px;
+    justify-content: center; margin-bottom: 52px;
   }
-
-  .btn-hero-primary {
-    background: var(--gold-btn);
-    color: #1a1400;
-    border: none; cursor: pointer;
-    font-family: 'DM Sans', sans-serif;
-    font-weight: 600; font-size: 15px;
-    padding: 16px 32px;
-    border-radius: 10px;
-    display: inline-flex; align-items: center; gap: 9px;
-    transition: background .2s, transform .15s;
-    text-decoration: none;
-  }
-  .btn-hero-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
-
   .hero-stats {
-    display: flex; gap: 36px; flex-wrap: wrap;
-    justify-content: center;
+    display: flex; gap: 36px; flex-wrap: wrap; justify-content: center;
   }
   .hero-stat {
     display: flex; align-items: center; gap: 8px;
@@ -248,35 +202,23 @@
   .hero-stat svg { color: var(--gold); flex-shrink: 0; }
 
   /* ── SECTIONS ──────────────────────────── */
-  section {
-    padding: 96px 48px;
-  }
-  .section-inner {
-    max-width: 1200px;
-    margin: 0 auto;
-  }
+  section { padding: 96px 48px; }
+  @media(max-width: 768px) { section { padding: 72px 20px; } }
+
+  .section-inner { max-width: 1200px; margin: 0 auto; }
   .section-label {
-    text-align: center;
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 14px;
+    text-align: center; font-size: 12px; font-weight: 700;
+    letter-spacing: 2px; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 14px;
   }
   .section-title {
     font-family: 'Playfair Display', serif;
     font-size: clamp(30px, 4vw, 46px);
-    font-weight: 700;
-    text-align: center;
-    margin-bottom: 14px;
+    font-weight: 700; text-align: center; margin-bottom: 14px;
   }
   .section-sub {
-    text-align: center;
-    color: var(--muted);
-    font-size: 16px;
-    max-width: 480px;
-    margin: 0 auto 60px;
+    text-align: center; color: var(--muted);
+    font-size: 16px; max-width: 480px; margin: 0 auto 60px;
   }
 
   /* ── SERVICES ──────────────────────────── */
@@ -291,220 +233,41 @@
   @media(max-width:540px){ .services-grid { grid-template-columns: 1fr; } }
 
   .service-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 28px 24px 30px;
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 14px; padding: 28px 24px 30px;
     transition: border-color .2s, transform .2s;
   }
   .service-card:hover { border-color: rgba(201,168,76,0.35); transform: translateY(-3px); }
-
   .service-icon {
     width: 44px; height: 44px;
-    background: rgba(201,168,76,0.18);
-    border-radius: 10px;
+    background: rgba(201,168,76,0.18); border-radius: 10px;
     display: flex; align-items: center; justify-content: center;
-    margin-bottom: 20px;
-    font-size: 20px;
+    margin-bottom: 20px; font-size: 20px;
   }
-  .service-card h3 {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 16px; font-weight: 700;
-    margin-bottom: 8px;
-  }
-  .service-card p {
-    font-size: 14px; color: var(--muted); line-height: 1.6;
-  }
+  .service-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+  .service-card p  { font-size: 14px; color: var(--muted); line-height: 1.6; }
 
   /* ── WHY US ────────────────────────────── */
   #why { background: var(--bg); }
 
   .why-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    margin-top: 0;
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
   }
   @media(max-width:720px){ .why-grid { grid-template-columns: 1fr; } }
 
   .why-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 40px 32px;
-    text-align: center;
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 14px; padding: 40px 32px; text-align: center;
     transition: border-color .2s, transform .2s;
   }
   .why-card:hover { border-color: rgba(201,168,76,0.3); transform: translateY(-3px); }
-
   .why-icon {
-    width: 52px; height: 52px;
-    background: rgba(201,168,76,0.15);
-    border-radius: 12px;
-    display: flex; align-items: center; justify-content: center;
-    margin: 0 auto 20px;
-    font-size: 22px;
+    width: 52px; height: 52px; background: rgba(201,168,76,0.15);
+    border-radius: 12px; display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 20px; font-size: 22px;
   }
-  .why-card h3 {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 17px; font-weight: 700;
-    margin-bottom: 10px;
-  }
-  .why-card p { font-size: 14px; color: var(--muted); line-height: 1.65; }
-
-  /* ── PROCESS ───────────────────────────── */
-  #process { background: var(--bg2); }
-
-  .process-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 18px;
-    max-width: 900px;
-    margin: 0 auto;
-  }
-  @media(max-width:620px){ .process-grid { grid-template-columns: 1fr; } }
-
-  .process-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 28px 28px;
-    display: flex; gap: 18px; align-items: flex-start;
-    transition: border-color .2s;
-  }
-  .process-card:hover { border-color: rgba(201,168,76,0.3); }
-
-  .process-num {
-    width: 40px; height: 40px; flex-shrink: 0;
-    background: var(--gold-btn);
-    border-radius: 10px;
-    display: flex; align-items: center; justify-content: center;
-    font-weight: 700; font-size: 16px;
-    color: #1a1400;
-  }
-  .process-card h3 {
-    font-size: 16px; font-weight: 700; margin-bottom: 6px;
-  }
-  .process-card p { font-size: 14px; color: var(--muted); line-height: 1.6; }
-
-  /* ── CONTACT ───────────────────────────── */
-  /* #contact { background: var(--bg); }
-
-  .contact-layout {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 28px;
-    align-items: start;
-    max-width: 1000px;
-    margin: 0 auto;
-  }
-  @media(max-width:800px){ .contact-layout { grid-template-columns: 1fr; } }
-
-  .contact-form-wrap {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 36px;
-  } */
-
-  /* .form-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-    margin-bottom: 16px;
-  }
-  @media(max-width:540px){ .form-row { grid-template-columns: 1fr; } }
-
-  .form-group {
-    display: flex; flex-direction: column; gap: 8px;
-    margin-bottom: 16px;
-  }
-  .form-group label {
-    font-size: 13px; font-weight: 600; color: var(--text);
-  }
-  .form-group input,
-  .form-group select,
-  .form-group textarea {
-    background: var(--card2);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 12px 14px;
-    color: var(--text);
-    font-family: 'DM Sans', sans-serif;
-    font-size: 14px;
-    outline: none;
-    transition: border-color .2s;
-    width: 100%;
-  }
-  .form-group input:focus,
-  .form-group select:focus,
-  .form-group textarea:focus { border-color: rgba(201,168,76,0.5); }
-  .form-group select { appearance: none; cursor: pointer; }
-  .form-group textarea { resize: vertical; min-height: 110px; }
-
-  .btn-send {
-    width: 100%;
-    background: var(--gold-btn);
-    color: #1a1400;
-    border: none; cursor: pointer;
-    font-family: 'DM Sans', sans-serif;
-    font-weight: 700; font-size: 15px;
-    padding: 16px;
-    border-radius: 10px;
-    display: flex; align-items: center; justify-content: center; gap: 9px;
-    margin-top: 8px;
-    transition: background .2s, transform .15s;
-  }
-  .btn-send:hover { background: var(--gold-light); transform: translateY(-1px); }
-
-  .contact-side { width: 320px; display: flex; flex-direction: column; gap: 18px; }
-  @media(max-width:800px){ .contact-side { width: 100%; } }
-
-  .contact-info-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 28px;
-  }
-  .contact-info-card h3 { font-size: 17px; font-weight: 700; margin-bottom: 18px; }
-
-  .contact-item {
-    display: flex; align-items: flex-start; gap: 12px;
-    margin-bottom: 14px; font-size: 14px; color: var(--muted);
-  }
-  .contact-item span.ci-icon {
-    color: var(--gold); flex-shrink: 0; margin-top: 1px; font-size: 16px;
-  } */
-
-  .testimonial-card {
-    background: rgba(201,168,76,0.07);
-    border: 1px solid rgba(201,168,76,0.2);
-    border-radius: 16px;
-    padding: 24px;
-  }
-  .testimonial-card .quote-icon {
-    color: var(--gold); font-size: 22px; margin-bottom: 12px;
-  }
-  .testimonial-card p {
-    font-size: 14px; color: var(--gold); font-weight: 600; line-height: 1.6;
-    margin-bottom: 12px;
-  }
-  .testimonial-card cite {
-    font-size: 13px; color: var(--muted); font-style: normal;
-  }
-
-  /* ── FOOTER ────────────────────────────── */
-  footer {
-    background: #080810;
-    border-top: 1px solid var(--border);
-    padding: 24px 48px;
-    display: flex; align-items: center; justify-content: space-between;
-    flex-wrap: wrap; gap: 12px;
-  }
-  footer span { font-size: 13px; color: var(--muted); }
-
-  /* ── SVG ICONS (inline) ─────────────────── */
-  .icon { display: inline-block; width: 1em; height: 1em; vertical-align: middle; }
+  .why-card h3 { font-size: 17px; font-weight: 700; margin-bottom: 10px; }
+  .why-card p  { font-size: 14px; color: var(--muted); line-height: 1.65; }
 
   /* ── BEFORE & AFTER ────────────────────── */
   #before-after { background: var(--bg2); }
@@ -514,76 +277,74 @@
     grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
     gap: 28px;
   }
-
   .ba-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    overflow: hidden;
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 16px; overflow: hidden;
     transition: border-color .2s, transform .2s;
   }
   .ba-card:hover { border-color: rgba(201,168,76,0.35); transform: translateY(-3px); }
-
   .ba-label-row {
-    padding: 16px 20px 14px;
-    border-bottom: 1px solid var(--border);
+    padding: 16px 20px 14px; border-bottom: 1px solid var(--border);
   }
-  .ba-project-label {
-    font-size: 15px; font-weight: 700; color: var(--text);
-  }
-  .ba-project-type {
+  .ba-project-label { font-size: 15px; font-weight: 700; color: var(--text); }
+  .ba-project-type  {
     font-size: 12px; color: var(--gold); font-weight: 600;
-    letter-spacing: 1px; text-transform: uppercase;
-    margin-top: 3px;
+    letter-spacing: 1px; text-transform: uppercase; margin-top: 3px;
   }
-
-  .ba-panels {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-  }
-
+  .ba-panels { display: grid; grid-template-columns: 1fr 1fr; }
   .ba-panel {
-    position: relative;
-    aspect-ratio: 4/3;
-    overflow: hidden;
-    background: #0a0a14;
+    position: relative; aspect-ratio: 4/3;
+    overflow: hidden; background: #0a0a14;
   }
-  .ba-panel + .ba-panel {
-    border-left: 1px solid var(--border);
-  }
-
-  .ba-panel img {
-    width: 100%; height: 100%;
-    object-fit: cover;
-    display: block;
-  }
-
+  .ba-panel + .ba-panel { border-left: 1px solid var(--border); }
+  .ba-panel img { width: 100%; height: 100%; object-fit: cover; display: block; }
   .ba-panel-badge {
     position: absolute; bottom: 10px; left: 50%;
     transform: translateX(-50%);
     font-size: 10px; font-weight: 700;
     letter-spacing: 1.5px; text-transform: uppercase;
     padding: 4px 12px; border-radius: 20px;
-    white-space: nowrap;
-    pointer-events: none;
+    white-space: nowrap; pointer-events: none;
   }
   .ba-panel-badge.before { background: rgba(0,0,0,0.65); color: #d0ccc8; }
   .ba-panel-badge.after  { background: rgba(196,160,48,0.9); color: #1a1400; }
+
+  /* ── PROCESS ───────────────────────────── */
+  #process { background: var(--bg2); }
+
+  .process-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 18px; max-width: 900px; margin: 0 auto;
+  }
+  @media(max-width:620px){ .process-grid { grid-template-columns: 1fr; } }
+
+  .process-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 14px; padding: 28px;
+    display: flex; gap: 18px; align-items: flex-start;
+    transition: border-color .2s;
+  }
+  .process-card:hover { border-color: rgba(201,168,76,0.3); }
+  .process-num {
+    width: 40px; height: 40px; flex-shrink: 0;
+    background: var(--gold-btn); border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 16px; color: #1a1400;
+  }
+  .process-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+  .process-card p  { font-size: 14px; color: var(--muted); line-height: 1.6; }
+
   /* ── TESTIMONIALS ──────────────────────── */
   #testimonials { background: var(--bg); }
 
   .reviews-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
-    margin-bottom: 56px;
+    gap: 20px; margin-bottom: 56px;
   }
-
   .review-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 28px;
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 16px; padding: 28px;
     display: flex; flex-direction: column; gap: 14px;
     animation: fadeUp .35s ease both;
   }
@@ -591,64 +352,40 @@
     from { opacity: 0; transform: translateY(14px); }
     to   { opacity: 1; transform: translateY(0); }
   }
-
-  .review-stars {
-    display: flex; gap: 3px;
-    color: var(--gold);
-    font-size: 15px;
-  }
-
-  .review-text {
-    font-size: 14px; color: var(--text);
-    line-height: 1.7; flex: 1;
-    font-style: italic;
-  }
-
+  .review-stars { display: flex; gap: 3px; color: var(--gold); font-size: 15px; }
+  .review-text  { font-size: 14px; color: var(--text); line-height: 1.7; flex: 1; font-style: italic; }
   .review-footer {
     display: flex; align-items: center; gap: 12px;
-    padding-top: 14px;
-    border-top: 1px solid var(--border);
+    padding-top: 14px; border-top: 1px solid var(--border);
   }
   .review-avatar {
     width: 36px; height: 36px; flex-shrink: 0;
-    background: var(--gold-btn);
-    border-radius: 50%;
+    background: var(--gold-btn); border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
     font-weight: 700; font-size: 15px; color: #1a1400;
   }
-  .review-name  { font-size: 14px; font-weight: 700; color: var(--text); }
-  .review-date  { font-size: 12px; color: var(--muted); margin-top: 1px; }
-
-  .no-reviews {
+  .review-name { font-size: 14px; font-weight: 700; color: var(--text); }
+  .review-date { font-size: 12px; color: var(--muted); margin-top: 1px; }
+  .no-reviews  {
     text-align: center; color: var(--muted);
-    font-size: 15px; padding: 40px 0 20px;
-    grid-column: 1 / -1;
+    font-size: 15px; padding: 40px 0 20px; grid-column: 1 / -1;
   }
 
-  /* Write a review form */
   .review-form-wrap {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 36px;
-    max-width: 680px;
-    margin: 0 auto;
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 16px; padding: 36px;
+    max-width: 680px; margin: 0 auto;
   }
   .review-form-wrap h3 {
     font-family: 'Playfair Display', serif;
-    font-size: 22px; font-weight: 700;
-    margin-bottom: 6px;
+    font-size: 22px; font-weight: 700; margin-bottom: 6px;
   }
-  .review-form-wrap .form-sub {
-    font-size: 14px; color: var(--muted); margin-bottom: 28px;
-  }
+  .review-form-wrap .form-sub { font-size: 14px; color: var(--muted); margin-bottom: 28px; }
 
-  .star-picker {
-    display: flex; gap: 6px; margin-bottom: 20px;
-  }
+  .star-picker { display: flex; gap: 6px; margin-bottom: 20px; }
   .star-picker button {
     background: none; border: none; cursor: pointer;
-    font-size: 26px; color: var(--border);
+    font-size: 26px; color: rgba(255,255,255,0.15);
     transition: color .15s, transform .15s;
     padding: 0; line-height: 1;
   }
@@ -662,15 +399,10 @@
   }
   .review-form-wrap input,
   .review-form-wrap textarea {
-    width: 100%;
-    background: var(--card2);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 12px 14px;
-    color: var(--text);
-    font-family: 'DM Sans', sans-serif;
-    font-size: 14px; outline: none;
-    transition: border-color .2s;
+    width: 100%; background: var(--card2); border: 1px solid var(--border);
+    border-radius: 8px; padding: 12px 14px; color: var(--text);
+    font-family: 'DM Sans', sans-serif; font-size: 14px;
+    outline: none; transition: border-color .2s;
   }
   .review-form-wrap input:focus,
   .review-form-wrap textarea:focus { border-color: rgba(201,168,76,0.5); }
@@ -680,8 +412,7 @@
     width: 100%; margin-top: 8px;
     background: var(--gold-btn); color: #1a1400;
     border: none; cursor: pointer;
-    font-family: 'DM Sans', sans-serif;
-    font-weight: 700; font-size: 15px;
+    font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 15px;
     padding: 15px; border-radius: 10px;
     display: flex; align-items: center; justify-content: center; gap: 9px;
     transition: background .2s, transform .15s;
@@ -689,16 +420,20 @@
   .btn-post-review:hover { background: var(--gold-light); transform: translateY(-1px); }
 
   .review-success {
-    display: none;
-    text-align: center;
-    padding: 18px;
-    background: rgba(201,168,76,0.08);
-    border: 1px solid rgba(201,168,76,0.3);
-    border-radius: 10px;
-    color: var(--gold);
-    font-size: 14px; font-weight: 600;
-    margin-top: 16px;
+    display: none; text-align: center; padding: 18px;
+    background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 10px; color: var(--gold);
+    font-size: 14px; font-weight: 600; margin-top: 16px;
   }
+
+  /* ── FOOTER ────────────────────────────── */
+  footer {
+    background: #080810; border-top: 1px solid var(--border);
+    padding: 24px 48px;
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 12px;
+  }
+  footer span { font-size: 13px; color: var(--muted); }
 </style>
 </head>
 <body>
@@ -709,15 +444,17 @@
     <div class="nav-logo-icon">🔨</div>
     <span>Aldo's Construction</span>
   </a>
-  <ul class="nav-links">
+  <ul class="nav-links" id="navLinks">
     <li><a href="#services">Services</a></li>
     <li><a href="#why">Why Us</a></li>
     <li><a href="#process">Process</a></li>
     <li><a href="#testimonials">Testimonials</a></li>
-    <li><button class="nav-hamburger"></button></li>
-    <!-- <li><a href="#contact">Contact</a></li> -->
   </ul>
-  <!-- <a href="#contact" class="btn-primary">Get Your Free Estimate</a> -->
+  <button class="nav-hamburger" id="navHamburger" aria-label="Toggle menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
 </nav>
 
 <!-- HERO -->
@@ -729,28 +466,16 @@
   <h1 class="hero-title">We get it done right, no shortcuts!</h1>
   <p class="hero-sub">From kitchens and bathrooms to full basement renovations — we bring precision, quality materials, and over 15 years of experience to every project.</p>
   <div class="hero-ctas">
-    <!-- <a href="#contact" class="btn-hero-primary">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-      Get Your Free Estimate
-    </a> -->
     <a href="#services" class="btn-outline">
       View Our Services
       <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
     </a>
   </div>
   <div class="hero-stats">
-    <!-- <div class="hero-stat">
-      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-      5-Star Rated
-    </div> -->
     <div class="hero-stat">
       <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
       15+ Years
     </div>
-    <!-- <div class="hero-stat">
-      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-      500+ Projects
-    </div> -->
   </div>
 </section>
 
@@ -761,7 +486,6 @@
     <h2 class="section-title">Our Services</h2>
     <p class="section-sub">Quality craftsmanship across every area of your home.</p>
     <div class="services-grid">
-
       <div class="service-card">
         <div class="service-icon">🍳</div>
         <h3>Kitchens</h3>
@@ -802,7 +526,6 @@
         <h3>Carpentry</h3>
         <p>Custom built-ins, shelving, decks, and woodwork.</p>
       </div>
-
     </div>
   </div>
 </section>
@@ -814,7 +537,6 @@
     <h2 class="section-title">Built on Trust &amp; Quality</h2>
     <p class="section-sub" style="margin-bottom:48px;"></p>
     <div class="why-grid">
-
       <div class="why-card">
         <div class="why-icon">🛡️</div>
         <h3>Licensed &amp; Insured</h3>
@@ -830,27 +552,23 @@
         <h3>On Time &amp; On Budget</h3>
         <p>Clear timelines, transparent pricing, and no surprise costs throughout your project.</p>
       </div>
-
     </div>
   </div>
 </section>
 
 <!-- BEFORE & AFTER -->
-<!-- ============================================================
-     HOW TO ADD YOUR PHOTOS:
-     For each .ba-panel, replace the src="" with your image path.
-     Examples:
-       src="images/kitchen-before.jpg"   (local file)
-       src="https://example.com/photo.jpg" (URL)
-     To add more projects, copy a full <-- PROJECT --> 
-     <!-- block and paste it.
-     ============================================================ -->
+<!--
+  HOW TO ADD YOUR PHOTOS:
+  Replace src="" with your image path, e.g.:
+    src="images/kitchen-before.jpg"   (local file)
+    src="https://example.com/photo.jpg" (URL)
+  To add more projects, copy a full PROJECT block and paste it.
+-->
 <section id="before-after">
   <div class="section-inner">
     <p class="section-label">Our Work</p>
     <h2 class="section-title">Before &amp; After</h2>
     <p class="section-sub">See the difference quality craftsmanship makes.</p>
-
     <div class="ba-grid">
 
       <!-- PROJECT 1 -->
@@ -862,12 +580,12 @@
         <div class="ba-panels">
           <div class="ba-panel">
             <!-- BEFORE image: replace src="" with your image path -->
-            <img src="download.jfif" alt="Before" onerror="this.parentElement.style.background='#12121f'">
+            <img src="" alt="Before" onerror="this.parentElement.style.background='#12121f'">
             <span class="ba-panel-badge before">Before</span>
           </div>
           <div class="ba-panel">
             <!-- AFTER image: replace src="" with your image path -->
-            <img src="download.jfif" alt="After" onerror="this.parentElement.style.background='#12121f'">
+            <img src="" alt="After" onerror="this.parentElement.style.background='#12121f'">
             <span class="ba-panel-badge after">After</span>
           </div>
         </div>
@@ -913,7 +631,7 @@
         </div>
       </div>
 
-    </div><!-- /.ba-grid -->
+    </div>
   </div>
 </section>
 
@@ -924,7 +642,6 @@
     <h2 class="section-title">Simple 4-Step Process</h2>
     <p class="section-sub" style="margin-bottom:48px;"></p>
     <div class="process-grid">
-
       <div class="process-card">
         <div class="process-num">1</div>
         <div>
@@ -953,88 +670,9 @@
           <p>We do a thorough walkthrough to ensure everything exceeds your expectations.</p>
         </div>
       </div>
-
     </div>
   </div>
 </section>
-
-<!-- CONTACT -->
-<!-- <section id="contact">
-  <div class="section-inner">
-    <p class="section-label">Get Started</p>
-    <h2 class="section-title">Request Your Free Estimate</h2>
-    <p class="section-sub">Tell us about your project and we'll get back to you within 24 hours.</p>
-    <div class="contact-layout">
-
-      <div class="contact-form-wrap">
-        <div class="form-row">
-          <div class="form-group">
-            <label>Full Name</label>
-            <input type="text" placeholder="">
-          </div>
-          <div class="form-group">
-            <label>Phone</label>
-            <input type="tel" placeholder="">
-          </div>
-        </div>
-        <div class="form-group">
-          <label>Email</label>
-          <input type="email" placeholder="">
-        </div>
-        <div class="form-group">
-          <label>Service Needed</label>
-          <select>
-            <option value="">Select a service...</option>
-            <option>Kitchens</option>
-            <option>Bathrooms</option>
-            <option>Flooring</option>
-            <option>Painting</option>
-            <option>Countertops</option>
-            <option>Doors &amp; Trim</option>
-            <option>Basements</option>
-            <option>Carpentry</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label>Project Details</label>
-          <textarea placeholder="Describe your project..."></textarea>
-        </div>
-        <button class="btn-send">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-          Send Request
-        </button>
-      </div>
-
-      <div class="contact-side">
-        <div class="contact-info-card">
-          <h3>Contact Info</h3>
-          <div class="contact-item">
-            <span class="ci-icon">📞</span>
-            (773) 647 - 9106
-          </div>
-          <div class="contact-item">
-            <span class="ci-icon">✉️</span>
-            aldosconstruction@yahoo.com
-          </div>
-          <div class="contact-item">
-            <span class="ci-icon">📍</span>
-            Metro Area, USA
-          </div>
-          <div class="contact-item">
-            <span class="ci-icon">🕐</span>
-            Mon-Sat 7AM-6PM
-          </div>
-        </div>
-        <div class="testimonial-card">
-          <div class="quote-icon">💬</div>
-          <p>"Absolutely transformed our kitchen. Professional, clean, and finished ahead of schedule!"</p>
-          <cite>— Sarah M., Happy Homeowner</cite>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section> -->
 
 <!-- TESTIMONIALS -->
 <section id="testimonials">
@@ -1043,12 +681,10 @@
     <h2 class="section-title">What Our Clients Say</h2>
     <p class="section-sub">Real reviews from real homeowners.</p>
 
-    <!-- Live review cards render here -->
     <div class="reviews-grid" id="reviewsGrid">
       <p class="no-reviews" id="noReviews">No reviews yet — be the first to share your experience!</p>
     </div>
 
-    <!-- Write a review form -->
     <div class="review-form-wrap">
       <h3>Leave a Review</h3>
       <p class="form-sub">Share your experience with Aldo's Construction.</p>
@@ -1083,7 +719,6 @@
         ✓ Thank you! Your review has been posted.
       </div>
     </div>
-
   </div>
 </section>
 
@@ -1094,11 +729,10 @@
 </footer>
 
 <script>
-// ── Supabase config ───────────────────────────────────────────
+// ── Supabase ──────────────────────────────────────────────────
 const SUPABASE_URL = 'https://juknwstchdrpolrrjcen.supabase.co';
 const SUPABASE_KEY = 'sb_publishable_9W2-PJCcdeNhtg00pA-HiA_o_YXQwot';
 const API = `${SUPABASE_URL}/rest/v1/reviews`;
-
 const headers = {
   'apikey': SUPABASE_KEY,
   'Authorization': `Bearer ${SUPABASE_KEY}`,
@@ -1106,31 +740,21 @@ const headers = {
   'Prefer': 'return=representation'
 };
 
-// ── Helpers ───────────────────────────────────────────────────
 function escHtml(str) {
   return String(str)
     .replace(/&/g,'&amp;').replace(/</g,'&lt;')
     .replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 }
-
 function formatDate(iso) {
-  return new Date(iso).toLocaleDateString('en-US', {
-    year: 'numeric', month: 'long', day: 'numeric'
-  });
+  return new Date(iso).toLocaleDateString('en-US', { year:'numeric', month:'long', day:'numeric' });
 }
 
-// ── Render reviews into the grid ──────────────────────────────
 function renderReviews(reviews) {
   const grid  = document.getElementById('reviewsGrid');
   const noMsg = document.getElementById('noReviews');
   grid.querySelectorAll('.review-card').forEach(c => c.remove());
-
-  if (!reviews || reviews.length === 0) {
-    noMsg.style.display = 'block';
-    return;
-  }
+  if (!reviews || reviews.length === 0) { noMsg.style.display = 'block'; return; }
   noMsg.style.display = 'none';
-
   reviews.forEach(r => {
     const card = document.createElement('div');
     card.className = 'review-card';
@@ -1145,13 +769,11 @@ function renderReviews(reviews) {
           <div class="review-name">${escHtml(r.name)}</div>
           <div class="review-date">${formatDate(r.created_at)}</div>
         </div>
-      </div>
-    `;
+      </div>`;
     grid.appendChild(card);
   });
 }
 
-// ── Load reviews from Supabase ────────────────────────────────
 async function loadReviews() {
   const noMsg = document.getElementById('noReviews');
   try {
@@ -1159,9 +781,8 @@ async function loadReviews() {
       headers: { 'apikey': SUPABASE_KEY, 'Authorization': `Bearer ${SUPABASE_KEY}` }
     });
     if (!res.ok) throw new Error(await res.text());
-    const data = await res.json();
-    renderReviews(data);
-  } catch (err) {
+    renderReviews(await res.json());
+  } catch(err) {
     console.error('Could not load reviews:', err);
     noMsg.textContent = 'Reviews could not be loaded right now. Please try again later.';
     noMsg.style.display = 'block';
@@ -1171,59 +792,46 @@ async function loadReviews() {
 // ── Star picker ───────────────────────────────────────────────
 let selectedRating = 0;
 const starBtns = document.querySelectorAll('#starPicker button');
-
 starBtns.forEach(btn => {
   btn.addEventListener('mouseenter', () => highlightStars(+btn.dataset.val));
   btn.addEventListener('mouseleave', () => highlightStars(selectedRating));
-  btn.addEventListener('click', () => {
-    selectedRating = +btn.dataset.val;
-    highlightStars(selectedRating);
-  });
+  btn.addEventListener('click', () => { selectedRating = +btn.dataset.val; highlightStars(selectedRating); });
 });
-
 function highlightStars(n) {
   starBtns.forEach(b => b.classList.toggle('active', +b.dataset.val <= n));
 }
 
-// ── Submit review to Supabase ─────────────────────────────────
+// ── Submit ────────────────────────────────────────────────────
 document.getElementById('postReviewBtn').addEventListener('click', async () => {
   const name       = document.getElementById('reviewName').value.trim();
   const text       = document.getElementById('reviewText').value.trim();
   const successMsg = document.getElementById('reviewSuccess');
   const btn        = document.getElementById('postReviewBtn');
 
-  if (!name)           { alert('Please enter your name.');         return; }
-  if (!selectedRating) { alert('Please select a star rating.');    return; }
-  if (!text)           { alert('Please write your review.');       return; }
+  if (!name)           { alert('Please enter your name.');      return; }
+  if (!selectedRating) { alert('Please select a star rating.'); return; }
+  if (!text)           { alert('Please write your review.');    return; }
 
-  // Disable button while posting
   btn.disabled = true;
   btn.textContent = 'Posting...';
 
   try {
     const res = await fetch(API, {
-      method: 'POST',
-      headers,
+      method: 'POST', headers,
       body: JSON.stringify({ name, text, rating: selectedRating })
     });
     if (!res.ok) throw new Error(await res.text());
-
-    // Reload all reviews so the new one shows for everyone
     await loadReviews();
-
-    // Reset form
     document.getElementById('reviewName').value = '';
     document.getElementById('reviewText').value = '';
     selectedRating = 0;
     highlightStars(0);
-
     successMsg.style.display = 'block';
     setTimeout(() => successMsg.style.display = 'none', 3500);
-    document.getElementById('reviewsGrid').scrollIntoView({ behavior: 'smooth', block: 'start' });
-
-  } catch (err) {
+    document.getElementById('reviewsGrid').scrollIntoView({ behavior:'smooth', block:'start' });
+  } catch(err) {
     console.error('Could not post review:', err);
-    alert('Something went wrong posting your review. Please try again.');
+    alert('Something went wrong. Please try again.');
   } finally {
     btn.disabled = false;
     btn.innerHTML = `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg> Post My Review`;
@@ -1233,13 +841,11 @@ document.getElementById('postReviewBtn').addEventListener('click', async () => {
 // ── Mobile nav ────────────────────────────────────────────────
 const hamburger = document.getElementById('navHamburger');
 const navLinks  = document.getElementById('navLinks');
- 
+
 hamburger.addEventListener('click', () => {
   hamburger.classList.toggle('open');
   navLinks.classList.toggle('open');
 });
- 
-// Close menu when a link is tapped
 navLinks.querySelectorAll('a').forEach(a => {
   a.addEventListener('click', () => {
     hamburger.classList.remove('open');
